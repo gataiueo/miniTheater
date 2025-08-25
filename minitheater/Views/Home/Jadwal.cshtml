@@ -1,0 +1,16 @@
+﻿@model IEnumerable<minitheater.Models.Jadwal>
+@{
+    var film = ViewBag.Film as minitheater.Models.Film;
+}
+
+<h2>Jadwal Film: @film?.Judul</h2>
+<ul>
+    @foreach (var j in Model)
+    {
+        <li>
+            @j.Tanggal.ToShortDateString() - @j.Jam
+            <a href="/Booking/Kursi?jadwalId=@j.Id">Pilih Kursi</a>
+        </li>
+    }
+</ul>
+<a href="/Home/Index">Kembali ke Daftar Film</a>

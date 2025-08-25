@@ -1,0 +1,12 @@
+﻿@model List<minitheater.Models.Jadwal>
+
+<h2>Daftar Film</h2>
+<ul>
+    @foreach (var jadwal in Model)
+    {
+        <li>
+            @jadwal.Film.Judul - @jadwal.Tanggal.ToShortDateString() - @jadwal.Jam
+            <a asp-controller="Booking" asp-action="Detail" asp-route-id="@jadwal.Id">Pilih Kursi</a>
+        </li>
+    }
+</ul>

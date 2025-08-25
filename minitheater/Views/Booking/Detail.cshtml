@@ -1,0 +1,21 @@
+﻿@model minitheater.Models.Jadwal
+
+<h2>@Model.Film.Judul</h2>
+<p>Tanggal: @Model.Tanggal.ToShortDateString()</p>
+<p>Jam: @Model.Jam</p>
+
+<form asp-controller="Booking" asp-action="Reservasi" method="post">
+    <input type="hidden" name="id" value="@Model.Id" />
+
+    <h3>Pilih Kursi:</h3>
+    @foreach (var kursi in Model.KursiList)
+    {
+        <label style="margin:5px; color:@(kursi.Status ? "red" : "green")">
+            <input type="checkbox" name="kursiTerpilih" value="@kursi.Nomor" @(kursi.Status ? "disabled" : "") />
+            @kursi.Nomor
+        </label>
+    }
+
+    <br />
+    <button type="submit">Reservasi</button>
+</form>

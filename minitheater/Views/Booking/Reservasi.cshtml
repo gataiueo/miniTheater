@@ -1,0 +1,12 @@
+﻿@model minitheater.Models.Reservasi
+
+<h2>Reservasi Berhasil!</h2>
+<p>Jadwal ID: @Model.JadwalId</p>
+<p>Kursi yang dipesan:</p>
+<ul>
+    @foreach (var kursi in Model.Kursi)
+    {
+        <li>@kursi</li>
+    }
+</ul>
+<a href="/Home/Index">Kembali ke Daftar Film</a>

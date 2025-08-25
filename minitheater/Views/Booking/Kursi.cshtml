@@ -1,0 +1,19 @@
+﻿@model minitheater.Models.Jadwal
+
+<h2>Pilih Kursi: @Model.Film.Judul</h2>
+<form method="post" action="/Booking/Reservasi">
+    <input type="hidden" name="jadwalId" value="@Model.Id" />
+    <div style="text-align:center; margin-bottom:10px; font-weight:bold;">LAYAR</div>
+    <div style="display:grid; grid-template-columns: repeat(5, 60px); gap:10px; justify-content:center;">
+        @foreach (var kursi in Model.KursiList)
+        {
+            <label style="background:@(kursi.Status ? "red" : "lightgreen"); padding:10px; border-radius:5px; text-align:center;">
+                <input type="checkbox" name="selectedSeats" value="@kursi.Nomor" @(kursi.Status ? "disabled" : "") />
+                @kursi.Nomor
+            </label>
+        }
+    </div>
+    <br />
+    <button type="submit">Pesan</button>
+</form>
+<a href="/Home/Jadwal/@Model.FilmId">Kembali ke Jadwal</a>
